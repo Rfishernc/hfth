@@ -15,6 +15,7 @@ import NewFriend from '../newFriend/newFriend';
 import NewHoliday from '../newHoliday/newHoliday';
 import Navbar from '../navbar/navbar';
 import Home from '../home/home';
+import EditFriend from '../editFriend/editFriend';
 
 const PublicRoute = ({ component: Component, authenticated, ...rest }) => {
   const routeChecker = props => (authenticated === false
@@ -23,7 +24,9 @@ const PublicRoute = ({ component: Component, authenticated, ...rest }) => {
   return <Route {...rest} render={props => routeChecker(props)} />;
 };
 
-const PrivateRoute = ({ component: Component, authenticated, ...rest }) => {
+const PrivateRoute = ({
+  component: Component, authenticated, ...rest
+}) => {
   const routeChecker = props => (authenticated === true
     ? (<Component { ...props } />)
     : (<Redirect to={{ pathname: '/auth', state: { from: props.location } } } />));
@@ -80,10 +83,17 @@ class App extends React.Component {
         <BrowserRouter>
           <React.Fragment>
             <Navbar isAuthenticated={this.state.authenticated} logoutClicked={logoutClicked}></Navbar>
-            <div className='row'>
+            <div className='row main'>
               <Switch>
                 <PrivateRoute path='/' exact component={Home} authenticated={this.state.authenticated}/>
-                <PrivateRoute path='/friends' component={Friends} authenticated={this.state.authenticated}/>
+                <PrivateRoute path='/friends/:id/edit' component={EditFriend} authenticated={this.state.authenticated}/>
+                <PrivateRoute path='/holidays/:id' exact component={HolidayDetail} authenticated={this.state.authenticated}/>
+                <PrivateRoute path='/holidays/:id/edit' component={EditHoliday} authenticated={this.state.authenticated}/>
+                <PrivateRoute path='/holidays/:id/friends' component={EditHoliday} authenticated={this.state.authenticated}/>
+                <PrivateRoute path='/friends' exact component={Friends} authenticated={this.state.authenticated}/>
+                <PrivateRoute path='/friends/new' component={NewFriend} authenticated={this.state.authenticated}/>
+                <PrivateRoute path='/holidays' exact component={Holidays} authenticated={this.state.authenticated}/>
+                <PrivateRoute path='/holidays/new' component={NewHoliday} authenticated={this.state.authenticated}/>
                 <PublicRoute path='/auth' component={Auth} authenticated={this.state.authenticated}/>
               </Switch>
             </div>

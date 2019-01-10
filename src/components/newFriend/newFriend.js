@@ -5,7 +5,7 @@ class newFriend extends React.Component {
   render() {
     return (
       <div>
-        <h3>newFriend</h3>
+        <h3>New Friend</h3>
       </div>
     );
   }

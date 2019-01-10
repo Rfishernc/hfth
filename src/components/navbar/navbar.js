@@ -24,9 +24,9 @@ class navbar extends React.Component {
           <Nav className='ml-auto' navbar>
             <NavItem className='navs'>
               <NavLink tag={RRNavLink} to='/friends'>Friends</NavLink>
-              <NavLink tag={RRNavLink} to='/newFriends'>New Friends</NavLink>
+              <NavLink tag={RRNavLink} to='/friends/new'>New Friends</NavLink>
               <NavLink tag={RRNavLink} to='/holidays'>Holidays</NavLink>
-              <NavLink tag={RRNavLink} to='/newHolidays'>New Holidays</NavLink>
+              <NavLink tag={RRNavLink} to='/holidays/new'>New Holidays</NavLink>
               <NavLink tag={RRNavLink} to='/auth' onClick={logoutClicked}>Logout</NavLink>
             </NavItem>
           </Nav>

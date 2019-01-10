@@ -5,7 +5,7 @@ class newHoliday extends React.Component {
   render() {
     return (
       <div>
-        <h3>newHoliday</h3>
+        <h3>New Holiday</h3>
       </div>
     );
   }
