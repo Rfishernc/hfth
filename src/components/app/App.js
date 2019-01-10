@@ -14,6 +14,7 @@ import Holidays from '../holidays/holidays';
 import NewFriend from '../newFriend/newFriend';
 import NewHoliday from '../newHoliday/newHoliday';
 import Navbar from '../navbar/navbar';
+import Home from '../home/home';
 
 const PublicRoute = ({ component: Component, authenticated, ...rest }) => {
   const routeChecker = props => (authenticated === false
@@ -62,7 +63,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { authenticated, pendingUser } = this.state;
+    const { pendingUser } = this.state;
     const logoutClicked = () => {
       authRequests.logoutUser();
       this.setState({
@@ -81,6 +82,8 @@ class App extends React.Component {
             <Navbar isAuthenticated={this.state.authenticated} logoutClicked={logoutClicked}></Navbar>
             <div className='row'>
               <Switch>
+                <PrivateRoute path='/' exact component={Home} authenticated={this.state.authenticated}/>
+                <PrivateRoute path='/friends' component={Friends} authenticated={this.state.authenticated}/>
                 <PublicRoute path='/auth' component={Auth} authenticated={this.state.authenticated}/>
               </Switch>
             </div>
