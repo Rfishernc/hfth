@@ -78,9 +78,12 @@ class App extends React.Component {
       <div className="App">
         <BrowserRouter>
           <React.Fragment>
-            <Switch>
-              <PublicRoute path='/auth' component={Auth} authenticated={this.state.authenticated}/>
-            </Switch>
+            <Navbar isAuthenticated={this.state.authenticated} logoutClicked={logoutClicked}></Navbar>
+            <div className='row'>
+              <Switch>
+                <PublicRoute path='/auth' component={Auth} authenticated={this.state.authenticated}/>
+              </Switch>
+            </div>
           </React.Fragment>
         </BrowserRouter>
       </div>

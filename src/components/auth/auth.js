@@ -1,11 +1,22 @@
-import React from 'react';
-import './auth.scss';
+import React, { Component } from 'react';
+import authRequests from '../../data/authRequests';
 
-class auth extends React.Component {
+class auth extends Component {
+  authenticateUser = (event) => {
+    event.preventDefault();
+    authRequests.authenticate()
+      .then((data) => {
+        this.props.history.push('/home');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   render() {
     return (
       <div>
-        <h3>auth</h3>
+        <button className='btn btn-info' onClick={this.authenticateUser}>Login</button>
       </div>
     );
   }

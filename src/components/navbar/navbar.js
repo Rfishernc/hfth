@@ -12,6 +12,10 @@ import {
 import './navbar.scss';
 
 class navbar extends React.Component {
+  state = {
+    isOpen: false,
+  }
+
   render() {
     const { isAuthenticated, logoutClicked } = this.props;
     const buildNavbar = () => {
@@ -33,7 +37,7 @@ class navbar extends React.Component {
     return (
       <div className='myNavBar'>
       <Navbar color="dark" dark expand="md">
-          <NavbarBrand href="/">React Nutshell</NavbarBrand>
+          <NavbarBrand href="/">Home for the Holidays</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             {buildNavbar()}
