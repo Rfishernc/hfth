@@ -6,7 +6,7 @@ class oneFriend extends React.Component {
   render() {
     return (
       <div>
-        <button className='btn btn-danger'><Link to={this.props.pathName} id={this.props.id}>{this.props.name}</Link></button>
+        
       </div>
     );
   }
